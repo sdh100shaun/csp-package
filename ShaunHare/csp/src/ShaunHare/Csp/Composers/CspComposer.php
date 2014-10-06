@@ -14,7 +14,23 @@ class CspComposer {
 
     public function compose($view)
     {
-        view->with('csp-header',header("Content-Security-Policy:".$cspPolicy));
-        $view->with("csp-script",$)
+        $view->with('csp-header',header("Content-Security-Policy:".$cspPolicy));
+        $view->with("csp-script",$this->makeScriptTag());
+    }
+
+    public function makeScriptTag()
+    {
+
+    }
+    private function makeClosingScriptTag()
+    {
+        return "</script>";
+
+    }
+    private function makeOpeningScriptTag()
+    {
+
+
+
     }
 } 
