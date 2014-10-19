@@ -17,10 +17,11 @@ class CspComposer {
     private $cspPolicy;
 
 
-    public function __construct( NonceCreator $nonceCreator)
+    public function __construct( NonceCreator $nonceCreator )
     {
 
         $this->nonceCreator = $nonceCreator;
+
     }
 
     public function compose($view)
@@ -39,9 +40,16 @@ class CspComposer {
 
     }
 
+    /**
+     * Make the script src tag
+     */
     private function makeScriptSrc()
     {
-        $this->cspPolicy["script-src"] = "self";
+        if(empty($this->cspPolicy["script-src"])
+        {
+            $this->cspPolicy["script-src"] ="self";
+
+        }
         
         if(isset($this->nonceCreator) && !empty($this->nonceCreator->getNonce()))
         {
